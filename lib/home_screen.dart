@@ -1,3 +1,4 @@
+import 'package:farm_monitoring_flutter/api/get_data.dart';
 import 'package:farm_monitoring_flutter/widgets/CustomLineGraph.dart';
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
@@ -9,10 +10,11 @@ class HomeScreen extends StatefulWidget {
 
   static String id = 'home_screen';
 
-  HomeScreen({this.dataLightIntensity,this.dataTemperature,this.dataMoisture});
-  final dataLightIntensity;
-  final dataTemperature;
-  final dataMoisture;
+  // HomeScreen({this.dataLightIntensity,this.dataTemperature,this.dataMoisture});
+  var dataLightIntensity;
+  var dataTemperature;
+  var dataMoisture;
+  DataFormat data;
 
 
   @override
@@ -109,6 +111,10 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    // DataFormat data = await getData(context);
+    // widget.dataLightIntensity = data.dataLightIntensity;
+    // widget.dataTemperature = data.dataTemperature;
+    // widget.dataMoisture = data.dataMoisture;
     print(widget.dataLightIntensity);
 
   }

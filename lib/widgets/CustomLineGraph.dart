@@ -11,6 +11,7 @@ class CustomLineGraph extends StatefulWidget {
   final int time;
   CustomLineGraph({this.title,this.createSampleData,this.time,this.changeTime});
 
+
   @override
   _CustomLineGraphState createState() => _CustomLineGraphState();
 }

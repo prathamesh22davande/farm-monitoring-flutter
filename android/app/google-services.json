@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1013242800587",
+    "project_id": "farm-monitor-85199",
+    "storage_bucket": "farm-monitor-85199.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1013242800587:android:bdd45198b67c9fedbd2e4e",
+        "android_client_info": {
+          "package_name": "com.prathamesh.farm_monitoring_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1013242800587-7r8jp21ph7mpmqlk4oocflodnbbha5dv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxK4H0xv_-eg7hPK7fWg9aMTKsLx-1xOk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1013242800587-7r8jp21ph7mpmqlk4oocflodnbbha5dv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

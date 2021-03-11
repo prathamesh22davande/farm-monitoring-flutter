@@ -1,4 +1,12 @@
+import 'package:farm_monitoring_flutter/api/get_data.dart';
 import 'package:farm_monitoring_flutter/home_screen.dart';
+import 'package:farm_monitoring_flutter/screens/DiseaseScreen.dart';
+import 'package:farm_monitoring_flutter/screens/bottom_nav_screen.dart';
+import 'package:farm_monitoring_flutter/screens/login.dart';
+import 'package:farm_monitoring_flutter/screens/sign_up.dart';
+import 'package:farm_monitoring_flutter/screens/speedometer_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -7,60 +15,31 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
-}
 
-Future<bool> getData (BuildContext context) async{
-  print('method Called');
-  //http.Response response = await http.get('https://api.thingspeak.com/channels/1288997/fields/2.json?api_key=GG8YZU6QEOKRPEHM&results');
-  http.Response response = await http.get('https://api.thingspeak.com/channels/1288997/feeds.json?api_key=GG8YZU6QEOKRPEHM&results');
-  if (response.statusCode == 200){
-    var data = response.body;
-    print(data);
-    var createdAt = jsonDecode(data)['feeds'];
-    print("******************");
-    print(createdAt);
-    print("******************");
-    List<int> arrLightIntensity = [];
-    List<int> arrTemperature = [];
-    List<int> arrMoisture = [];
-    for (var x in createdAt){
-      //print('DATA : ${x['field2']}');
-      arrTemperature.add(double.parse(x['field1']).toInt());
-      arrLightIntensity.add(int.parse(x['field2']));
-      arrMoisture.add(double.parse(x['field3']).toInt());
-    }
-    // for (var x in arr){
-    //   print('data : $x');
-    // }
-    Navigator.push(context,MaterialPageRoute(builder: (context){
-      return HomeScreen(
-          dataLightIntensity: arrLightIntensity,
-          dataTemperature: arrTemperature,
-          dataMoisture: arrMoisture,
-      );
-    }));
-    return true;
-
-  }else{
-    print('ERROR ${response.statusCode}');
-  }
 }
 
 
 
 class MyApp extends StatelessWidget {
+  final _auth = FirebaseAuth.instance;
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       title: 'Flutter Demo',
         initialRoute: '/',
         routes: {
-          '/': (context) => MyHomePage(),
-          // When navigating to the "/second" route, build the SecondScreen widget.
+          '/': (context) => _auth.currentUser!=null?BottomNavigationScreen():Login(),
           HomeScreen.id: (context) => HomeScreen(),
+          SignUp.id: (context) => SignUp(),
+          Login.id: (context) => Login(),
+          BottomNavigationScreen.id:(context)=>BottomNavigationScreen(),
+          SpeedometerScreen.id: (context)=> SpeedometerScreen(),
         },
     );
   }
@@ -69,6 +48,7 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //getData(context);
     getData(context);
     return Scaffold(
       body: Center(
@@ -114,3 +94,4 @@ class CustomCard extends StatelessWidget {
     );
   }
 }
+
