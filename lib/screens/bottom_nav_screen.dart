@@ -3,10 +3,12 @@ import 'package:farm_monitoring_flutter/api/get_data.dart';
 import 'package:farm_monitoring_flutter/home_screen.dart';
 import 'package:farm_monitoring_flutter/main.dart';
 import 'package:farm_monitoring_flutter/screens/AnalyticsScreen.dart';
+import 'package:farm_monitoring_flutter/screens/CalenderScreen.dart';
 import 'package:farm_monitoring_flutter/screens/DiseaseScreen.dart';
 import 'package:farm_monitoring_flutter/screens/FarmScreen.dart';
 import 'package:farm_monitoring_flutter/screens/GraphScreen.dart';
 import 'package:farm_monitoring_flutter/screens/PlotScreen.dart';
+import 'package:farm_monitoring_flutter/screens/ProfileScreen.dart';
 import 'package:farm_monitoring_flutter/screens/login.dart';
 import 'package:farm_monitoring_flutter/screens/sign_up.dart';
 import 'package:farm_monitoring_flutter/screens/speedometer_screen.dart';
@@ -50,10 +52,10 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
      listOfScreens = [
 
       GraphScreen(),
-      FarmScreen(),
+      Calender(),
       DiseaseScreen(),
       AnalyticsScreen(),
-      PlotScreen(),
+      ProfileScreen(),
     ];
     return Scaffold(
 

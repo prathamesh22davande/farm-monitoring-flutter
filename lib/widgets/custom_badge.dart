@@ -10,6 +10,7 @@ class CustomBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
+        print('Badge Clicked');
         changeTime(time);
       },
       child: Container(
