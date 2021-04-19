@@ -295,6 +295,7 @@ class _CalenderState extends State<Calender> {
 
   _buildListView(List<Task> tasks) {
     List<Task> taskPrint=[];
+    
     for(var task in tasks)
       {
         if(selectedDate==task.date)
