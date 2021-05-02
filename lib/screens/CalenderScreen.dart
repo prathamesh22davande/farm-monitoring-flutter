@@ -355,6 +355,68 @@ class _CalenderState extends State<Calender> {
         ));
   }
 
+<<<<<<< HEAD
+=======
+  _buildListView(List<Task> tasks) {
+    List<Task> taskPrint=[];
+    
+    for(var task in tasks)
+      {
+        if(selectedDate==task.date)
+          {
+            taskPrint.add(task);
+          }
+      }
+    return SingleChildScrollView(
+      physics: ScrollPhysics(),
+      child: ListView.builder(
+        physics: NeverScrollableScrollPhysics(),
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        itemCount: taskPrint.length,
+        itemBuilder: (context, index) {
+          return Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                    color: Color(0xff00A961),
+                    borderRadius: BorderRadius.circular(10.0)
+                ),
+                child: ListTile(
+                  title: Text('Task', style: TextStyle(color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0)),
+                  subtitle: Container(
+                    padding: EdgeInsets.all(15.0),
+                    child: Column(
+                      children: [
+                        Text(
+                          taskPrint[index].taskName,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.0),
+                        ),
+                        Text('Description:'),
+                        Text(taskPrint[index].taskDescription.toString(),
+                          style: TextStyle(
+                              color: Colors.white, fontSize: 15.0),),
+                        Text(taskPrint[index].date.toString(), style: TextStyle(
+                            color: Colors.white),),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10.0,)
+            ],
+          );
+        },
+      ),
+    );
+  }
+
+>>>>>>> 1c6ad50f88209fd32e11fd12fbdc0f4ea7f7823f
   loadTasks() async{
     List<Task> arr = await getTasks();
     setState(() {
